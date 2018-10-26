@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+/*import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native'
+
 
 class Inputs extends Component {
    state = {
@@ -37,7 +38,7 @@ class Inputs extends Component {
                /*onPress = {
                   () => this.login(this.state.email, this.state.password)
                }*/
-               onPress={() => navigate('App')}
+              /* onPress={() => navigate('App')}
                >
                <Text style = {styles.submitButtonText}> Login </Text>
             </TouchableOpacity>
@@ -64,10 +65,10 @@ const styles = StyleSheet.create({
       margin: 15,
       height: 40,
      /* margin: 'center',*/
-   },
+  /* },
    submitButtonText:{
       color: 'white'
    }
 })
 
-export default Inputs;
+export default Inputs;*/

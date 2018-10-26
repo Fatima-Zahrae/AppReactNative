@@ -1,114 +1,88 @@
-/*import React from 'react';
-import { AppState , StyleSheet, Text, View , Button , TextInput , TouchableHighlight , SectionList} from 'react-native';
-import DefaultInput from './prueba';
-import Inputs from './datos';
-/*import AppStateExample from './entrada';*/
-
-/*export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Bienvenidos a mi aplicacion de React Native!</Text>
-        <Inputs />
-        <TextInput placeholder='Introduce tu nombre' />
-          <View style={styles.buttonContainer}>
-            <Button 
-              title='clic me'
-              color="green"
-              onPress={buttonClicked}/>
-          </View>
-      </View>
-    );
-  }
-}
-const buttonClicked = () => {
-  alert('has pulsado')
-}
-
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'lightcyan',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    borderColor: 'black',
-    borderWidth: 0.5,
-    backgroundColor: '#fff',
-    padding: 10,
-    margin: 5,
-    borderRadius: 5,
-  },
-});*/
-
-
 import React from 'react';
-import { View, Text } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
-import Inputs from './datos';
-import App from './FirstScreen';
-
+import { ImageBackground , View, Text, Button ,StyleSheet} from 'react-native';
+import { createStackNavigator, StackActions, NavigationActions } from 'react-navigation'; // Version can be specified in package.json
+import Inputs from './src/components/vistaLogin';
+//import ejecucionVista from './src/components/ejecucionVista'
 class HomeScreen extends React.Component {
   render() {
     return (
+      <ImageBackground source={{uri:'https://images.unsplash.com/photo-1538558940285-e76825003c99?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ee24d88663cd26779d898a6435f8ece4&auto=format&fit=crop&w=1350&q=80'}} 
+      style={styles.container}
+      >
+      <View style={styles.contenido}>
+        <Text  style={styles.textoEntrada} >Bienvenido a mi App !</Text>
+        <Button style={styles.botonDetalle}
+          title="Ver Aplicacion"
+          onPress={() => {
+            this.props.navigation.dispatch(StackActions.reset({
+              index: 0,
+              actions: [
+                NavigationActions.navigate({ routeName: 'Details' })
+              ],
+              
+            }))
+          }}
+        />
+
+      </View>
+      </ImageBackground>
+    );
+  }  
+}
+
+
+class vistaLogin extends React.Component {
+  render() {
+    return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        
-        <Text>Bienvenidos a mi aplicacion de React Native!</Text>
-        <Inputs />
-        <App />
+         <Inputs />
       </View>
     );
-  }
+  }  
 }
+
+
 
 export default createStackNavigator({
   Home: {
     screen: HomeScreen,
   },
-});
-
-/*export default class App extends React.Component {
-  render() {
-    return <RootStack />;
-  }
-}*/
-
-
-
-
-
-/*import React from 'react';
-import FirstScreen from './FirstScreen';
-import SecondScreen from './src/components/SecondScreen';
-import { createStackNavigator } from 'react-navigation';
-
-const RootStack = createStackNavigator({
-
- First: { screen: FirstScreen },
-
- Second: { screen: SecondScreen },
-},
-
+  Details: {
+    screen: vistaLogin,
+  },
+}, 
 {
- initialRouteName: 'First',
+    initialRouteName: 'Home',
 });
 
-export default class App extends React.Component {
- render() {
-   return <RootStack />;
- }
-}*/
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+      backgroundColor: 'lightcyan',
+      alignItems: 'center',
+    },
+  contenido: {
+    marginTop: 200,
+    width: 300,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    },
+    botonDetalle: {
+      margin: 15,
+      borderColor: 'green',
+      borderWidth: 1,
+      width: 300,
+      height: 30,
+      justifyContent: 'center',
+      borderRadius: 6,
+      alignItems: 'center',
+      paddingLeft: 10
+    },
+    textoEntrada: {
+      fontSize: 25,
+       color: 'black',
+       justifyContent: 'center'
+  }, 
 
-
-
-
-
-
-
-
-
-
+});
